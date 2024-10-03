@@ -1,0 +1,37 @@
+version: '3'
+services:
+  frontend:
+    image: nginx:latest
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    ports:
+      - "8080:80"
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+    volumes:
+      - ./backend:/app
+    command: bash -c "while true; do sleep 2; done" # Watch for changes
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:

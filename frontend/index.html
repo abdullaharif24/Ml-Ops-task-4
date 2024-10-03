@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        form { display: flex; flex-direction: column; width: 300px; }
+        label, input { margin-bottom: 10px; }
+        input { padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1>User Information</h1>
+    <form action="http://localhost:5000/submit" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="cnic">CNIC</label>
+        <input type="text" id="cnic" name="cnic" required>
+        
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
